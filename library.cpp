@@ -57,7 +57,22 @@ public:
         books[id].borrowed = false;
         cout << "Book returned successfully\n";
     }
+    
+    // Sprint-3: Generate Report
+void generateReport() {
+    cout << "\nBookID | Title | Author | Status\n";
+    for (auto &b : books) {
+        cout << b.first << " | "
+             << b.second.title << " | "
+             << b.second.author << " | "
+             << (b.second.borrowed ? "Borrowed" : "Available")
+             << endl;
+    }
+}
 };
+
+//
+
 
 // Simple test in main
 int main() {
@@ -65,6 +80,7 @@ int main() {
 
     lib.addBook("B1", "C++", "Bjarne");
     lib.addBook("B2", "Python", "Guido");
+    lib.generateReport();
 
     lib.borrowBook("B1");
     lib.borrowBook("B1");   // should give error
